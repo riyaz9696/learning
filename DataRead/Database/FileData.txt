@@ -1,0 +1,1 @@
+Hi.. I want to read muliple files one by one through java ,which are created one by one through another software and when the all file size is full, then it use to overwrite information in the first one and so on. pls, reply fast...Thanks in advance.. good good good good
