@@ -16,9 +16,9 @@ class DataReadExample
 
      Scanner sc=new Scanner(System.in);
 
-     System.out.println("Enter Your Searching word:");
+     System.out.println("Enter Your Searching word from files:");
      String wordSearch=sc.nextLine();
-     System.out.println("You Searched :"+wordSearch);
+     System.out.println("You Searched for :"+wordSearch);
      String[] userinput=wordSearch.split(" ");
     
     //This is for folder or directroy
@@ -26,11 +26,15 @@ class DataReadExample
      File folder = new File(srcDir);
      File[] listOfFiles = folder.listFiles();
      
-     Map<Integer,String> map=new TreeMap<Integer,String>(Collections.reverseOrder());
-          
-     int per;
-     int factor;
+     Map<String,Integer> map=new TreeMap<String,Integer>();
+    
+
+
+
+     int percent;
+     int multiply;
      int wordcount=0;
+     int totalWordInFile=0;
      if (listOfFiles.length > 0) {
       
       for (int i = 0; i < listOfFiles.length; i++) {
@@ -53,50 +57,41 @@ class DataReadExample
             if(ts.equalsIgnoreCase(userinput[j]))
             {
               count=count+1;
+             }
 
-            }
           }
           System.out.println("File name:"+listOfFiles[i].getName()+"---"+userinput[j]+"-->"+count);
-          wordcount=wordcount+count;
-          
-          
-        }
-       
+          wordcount=wordcount+count;  
+         totalWordInFile=totalWordInFile+words.length;
+               
+        }       
+          System.out.println("Total word in file-"+totalWordInFile); 
+          totalWordInFile=0;         
+        percent=((wordcount*100)/userinput.length);
+        map.put(listOfFiles[i].getName(),percent);      
 
-        per=((wordcount*100)/userinput.length);
-        map.put(per,listOfFiles[i].getName());
-        
-
-        System.out.println(per);
-        System.out.println("&&&&");
-        System.out.println(userinput.length);
-        
+        System.out.println("Total % :"+percent);        
+        //System.out.println(userinput.length);       
 
         wordcount=0;
-        per=0;
-        factor=0;
-        
-        System.out.println("---");
+        percent=0;
+        multiply=0;
 
+        System.out.println("---"); 
+        System.out.println("Total Search Word in String :"+userinput.length);         
       }
        
     }
-  }
-  
+  }  
          Set set = map.entrySet();
       Iterator iterator = set.iterator();
       while(iterator.hasNext()) {
          Map.Entry mentry = (Map.Entry)iterator.next();
-         //System.out.print("Files: "+ map + " & Value is: ");
-         System.out.println("Files :"+mentry.getValue());
+          
+         System.out.println("Files :"+mentry.getKey());
+
       }
-          //System.out.println("DescendingMap: "+Collections.reverse(map));
-          //System.out.println("DescendingMap: "+map.descendingMap());  
-
-
-         
-//System.out.println("Sorted Files: " + map);
-
+  
 }
 catch(Exception e)
 {

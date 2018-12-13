@@ -1,3 +1,2 @@
-Create a file object with path of files as the constructor. Count the 
-file numbers. Create a for loop where you need to read the file one by 
-one riyaz.
+Create a file object with path of files as the constructor Count the file numbers.
+Create a for loop where you need to read the file one by one.
